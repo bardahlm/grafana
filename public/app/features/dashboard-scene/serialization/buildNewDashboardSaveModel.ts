@@ -9,6 +9,7 @@ import {
   GroupByVariableKind,
   Spec as DashboardV2Spec,
 } from '@grafana/schema/dist/esm/schema/dashboard/v2alpha1/types.spec.gen';
+import { t } from 'app/core/internationalization';
 import { AnnoKeyFolder } from 'app/features/apiserver/types';
 import { DashboardWithAccessInfo } from 'app/features/dashboard/api/types';
 import { getDatasourceSrv } from 'app/features/plugins/datasource_srv';
@@ -30,13 +31,13 @@ export async function buildNewDashboardSaveModel(urlFolderUid?: string): Promise
       const filterVariable = {
         datasource: datasourceRef,
         filters: [],
-        name: 'Filter',
+        name: t('dashboard-scene.build-new-dashboard-save-model.filter-variable.name.filter', 'Filter'),
         type: 'adhoc',
       };
 
       const groupByVariable: VariableModel = {
         datasource: datasourceRef,
-        name: 'Group by',
+        name: t('dashboard-scene.build-new-dashboard-save-model.group-by-variable.name.group-by', 'Group by'),
         type: 'groupby',
       };
 
@@ -55,7 +56,7 @@ export async function buildNewDashboardSaveModel(urlFolderUid?: string): Promise
     dashboard: {
       ...defaultDashboard,
       uid: '',
-      title: 'New dashboard',
+      title: t('dashboard-scene.build-new-dashboard-save-model.data.title.new-dashboard', 'New dashboard'),
       panels: [],
       timezone: config.bootData.user?.timezone || defaultDashboard.timezone,
     },
@@ -91,7 +92,11 @@ export async function buildNewDashboardSaveModelV2(
 
       const filterVariable: AdhocVariableKind = {
         kind: 'AdhocVariable',
-        spec: { ...defaultAdhocVariableSpec(), name: 'Filter', datasource: datasourceRef },
+        spec: {
+          ...defaultAdhocVariableSpec(),
+          name: t('dashboard-scene.build-new-dashboard-save-model-v2.filter-variable.name.filter', 'Filter'),
+          datasource: datasourceRef,
+        },
       };
 
       const groupByVariable: GroupByVariableKind = {
@@ -99,7 +104,7 @@ export async function buildNewDashboardSaveModelV2(
         spec: {
           ...defaultGroupByVariableSpec(),
           datasource: datasourceRef,
-          name: 'Group by',
+          name: t('dashboard-scene.build-new-dashboard-save-model-v2.group-by-variable.name.group-by', 'Group by'),
         },
       };
 
@@ -112,7 +117,7 @@ export async function buildNewDashboardSaveModelV2(
     kind: 'DashboardWithAccessInfo',
     spec: {
       ...defaultDashboardV2Spec(),
-      title: 'New dashboard',
+      title: t('dashboard-scene.build-new-dashboard-save-model-v2.data.title.new-dashboard', 'New dashboard'),
       timeSettings: {
         ...defaultTimeSettingsSpec(),
         timezone: config.bootData.user?.timezone || defaultTimeSettingsSpec().timezone,

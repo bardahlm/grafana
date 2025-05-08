@@ -22,6 +22,7 @@ import {
   HeatmapCalculationMode,
   HeatmapCalculationOptions,
 } from '@grafana/schema';
+import { t } from 'app/core/internationalization';
 
 import { convertDurationToMilliseconds, niceLinearIncrs, niceTimeIncrs } from './utils';
 
@@ -325,13 +326,13 @@ export function calculateHeatmapFromData(
     },
     fields: [
       {
-        name: 'xMin',
+        name: t('transformers.calculate-heatmap-from-data.frame.name.x-min', 'xMin'),
         type: xField.type,
         values: heat2d.x,
         config: xField.config,
       },
       {
-        name: 'yMin',
+        name: t('transformers.calculate-heatmap-from-data.frame.name.y-min', 'yMin'),
         type: FieldType.number,
         values: heat2d.y,
         config: {
@@ -342,7 +343,7 @@ export function calculateHeatmapFromData(
         },
       },
       {
-        name: 'Count',
+        name: t('transformers.calculate-heatmap-from-data.frame.name.count', 'Count'),
         type: FieldType.number,
         values: heat2d.count,
         config: {

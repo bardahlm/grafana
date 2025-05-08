@@ -5,6 +5,7 @@ import { CSSProperties } from 'react';
 import { LinkModel } from '@grafana/data';
 import { ColorDimensionConfig, ResourceDimensionConfig, ResourceDimensionMode } from '@grafana/schema';
 import { SanitizedSVG } from 'app/core/components/SVG/SanitizedSVG';
+import { t } from 'app/core/internationalization';
 import { getPublicOrAbsoluteUrl } from 'app/features/dimensions';
 import { DimensionContext } from 'app/features/dimensions/context';
 import { ColorDimensionEditor, ResourceDimensionEditor } from 'app/features/dimensions/editors';
@@ -118,7 +119,7 @@ export const iconItem: CanvasElementItem<IconConfig, IconData> = {
         category,
         id: 'iconSelector',
         path: 'config.path',
-        name: 'SVG Path',
+        name: t('canvas.icon-item.name.svg-path', 'SVG Path'),
         editor: ResourceDimensionEditor,
         settings: {
           resourceType: 'icon',
@@ -129,7 +130,7 @@ export const iconItem: CanvasElementItem<IconConfig, IconData> = {
         category,
         id: 'config.fill',
         path: 'config.fill',
-        name: 'Fill color',
+        name: t('canvas.icon-item.name.fill-color', 'Fill color'),
         editor: ColorDimensionEditor,
         settings: {},
         defaultValue: {

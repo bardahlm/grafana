@@ -398,7 +398,7 @@ export class ElementState implements LayerElement {
 
     if (frames) {
       const defaultField = {
-        name: 'Default field',
+        name: t('canvas.element-state.default-field.name.default-field', 'Default field'),
         type: FieldType.string,
         config: { links: this.options.links ?? [], actions: this.options.actions ?? [] },
         values: [],

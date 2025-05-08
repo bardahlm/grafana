@@ -1,12 +1,13 @@
 import { MoveableManagerInterface, Renderer } from 'moveable';
 
+import { t } from 'app/core/internationalization';
 import { VerticalConstraint, HorizontalConstraint } from 'app/plugins/panel/canvas/panelcfg.gen';
 
 import { Scene } from './scene';
 import { findElementByTarget } from './sceneElementManagement';
 
 export const settingsViewable = (scene: Scene) => ({
-  name: 'settingsViewable',
+  name: t('canvas.settings-viewable.name.settings-viewable', 'settingsViewable'),
   props: [],
   events: [],
   render(moveable: MoveableManagerInterface<unknown, unknown>, React: Renderer) {
@@ -97,7 +98,7 @@ export const dimensionViewable = {
 };
 
 export const constraintViewable = (scene: Scene) => ({
-  name: 'constraintViewable',
+  name: t('canvas.constraint-viewable.name.constraint-viewable', 'constraintViewable'),
   props: [],
   events: [],
   render(moveable: MoveableManagerInterface<unknown, unknown>, React: Renderer) {

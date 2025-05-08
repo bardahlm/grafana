@@ -7,6 +7,7 @@ import {
   RowPanel,
   VariableModel,
 } from '@grafana/schema';
+import { t } from 'app/core/internationalization';
 import { GetVariables } from 'app/features/variables/state/selectors';
 import { DashboardMeta } from 'app/types';
 
@@ -52,7 +53,7 @@ export function createAnnotationJSONFixture(annotationInput: Partial<AnnotationQ
 export function createVariableJSONFixture(annotationInput: Partial<VariableModel>): VariableModel {
   return {
     ...defaultVariableModel,
-    name: 'foo.variable',
+    name: t('dashboard.create-variable-jsonfixture.name.foovariable', 'foo.variable'),
     type: 'constant',
     ...annotationInput,
   };

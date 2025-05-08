@@ -31,6 +31,7 @@ import {
   LogsMetaItem,
 } from '@grafana/data';
 import { getConfig } from 'app/core/config';
+import { t } from 'app/core/internationalization';
 
 import { getLogsExtractFields } from '../explore/Logs/LogsTable';
 import { downloadDataFrameAsCsv, downloadLogsModelAsTxt } from '../inspector/utils/download';
@@ -269,8 +270,16 @@ export const mergeLogsVolumeDataFrames = (dataFrames: DataFrame[]): { dataFrames
     // Log Volume visualization uses the name when toggling the legend
     levelDataFrame.name = level;
     levelDataFrame.meta = meta;
-    levelDataFrame.addField({ name: 'Time', type: FieldType.time, config: timeFieldConfig });
-    levelDataFrame.addField({ name: 'Value', type: FieldType.number, config: valueFieldConfig });
+    levelDataFrame.addField({
+      name: t('logs.merge-logs-volume-data-frames.name.time', 'Time'),
+      type: FieldType.time,
+      config: timeFieldConfig,
+    });
+    levelDataFrame.addField({
+      name: t('logs.merge-logs-volume-data-frames.name.value', 'Value'),
+      type: FieldType.number,
+      config: valueFieldConfig,
+    });
 
     Object.entries(aggregated[level])
       .sort((a, b) => Number(a[0]) - Number(b[0]))
@@ -493,7 +502,7 @@ const addISODateTransformation: CustomTransformOperator = () => (source: Observa
       return data.map((frame: DataFrame) => {
         const timeField = getTimeField(frame);
         const field: Field = {
-          name: 'Date',
+          name: t('logs.add-isodate-transformation.field.name.date', 'Date'),
           values: timeField.timeField ? timeField.timeField?.values.map((v) => dateTime(v).toISOString()) : [],
           type: FieldType.other,
           config: {},

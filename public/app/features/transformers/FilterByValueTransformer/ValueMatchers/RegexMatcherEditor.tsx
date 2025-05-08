@@ -43,7 +43,7 @@ export function regexMatcherEditor(
 export const getRegexValueMatchersUI = (): Array<ValueMatcherUIRegistryItem<BasicValueMatcherOptions>> => {
   return [
     {
-      name: 'Regex',
+      name: t('transformers.get-regex-value-matchers-ui.name.regex', 'Regex'),
       id: ValueMatcherID.regex,
       component: regexMatcherEditor({
         validator: () => true,

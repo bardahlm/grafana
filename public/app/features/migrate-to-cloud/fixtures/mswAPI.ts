@@ -1,6 +1,8 @@
 import { HttpResponse, http } from 'msw';
 import { SetupServer, setupServer } from 'msw/node';
 
+import { t } from 'app/core/internationalization';
+
 import { validCloudMigrationToken } from './tokens';
 
 function createMockAPI(): SetupServer {
@@ -9,7 +11,7 @@ function createMockAPI(): SetupServer {
       if (params.uid === 'dashboard-404') {
         return HttpResponse.json(
           {
-            message: 'Dashboard not found',
+            message: t('migrate-to-cloud.create-mock-api.server.message.dashboard-not-found', 'Dashboard not found'),
           },
           {
             status: 404,
@@ -19,7 +21,7 @@ function createMockAPI(): SetupServer {
 
       return HttpResponse.json({
         dashboard: {
-          title: 'My Dashboard',
+          title: t('migrate-to-cloud.create-mock-api.server.title.my-dashboard', 'My Dashboard'),
         },
         meta: {
           folderTitle: 'Dashboards',
@@ -31,7 +33,10 @@ function createMockAPI(): SetupServer {
       if (params.uid === 'library-element-404') {
         return HttpResponse.json(
           {
-            message: 'Library element not found',
+            message: t(
+              'migrate-to-cloud.create-mock-api.server.message.library-element-not-found',
+              'Library element not found'
+            ),
           },
           {
             status: 404,
@@ -41,7 +46,7 @@ function createMockAPI(): SetupServer {
 
       return HttpResponse.json({
         result: {
-          name: 'My Library Element',
+          name: t('migrate-to-cloud.create-mock-api.server.name.my-library-element', 'My Library Element'),
           meta: {
             folderName: 'FolderName',
           },
@@ -63,7 +68,7 @@ function createMockAPI(): SetupServer {
 
       return HttpResponse.json(
         {
-          message: 'Invalid token',
+          message: t('migrate-to-cloud.create-mock-api.server.message.invalid-token', 'Invalid token'),
         },
         { status: 500 }
       );

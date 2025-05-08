@@ -1,5 +1,6 @@
 import { Registry, RegistryItem } from '@grafana/data';
 import { Spec as DashboardV2Spec } from '@grafana/schema/dist/esm/schema/dashboard/v2alpha1/types.spec.gen';
+import { t } from 'app/core/internationalization';
 
 import { DashboardLayoutManager } from '../../scene/types/DashboardLayoutManager';
 
@@ -22,22 +23,22 @@ export const layoutDeserializerRegistry: Registry<LayoutSerializerRegistryItem> 
     return [
       {
         id: 'GridLayout',
-        name: 'Grid Layout',
+        name: t('dashboard-scene.layout-deserializer-registry.name.grid-layout', 'Grid Layout'),
         deserialize: deserializeDefaultGridLayout,
       },
       {
         id: 'AutoGridLayout',
-        name: 'Auto Grid Layout',
+        name: t('dashboard-scene.layout-deserializer-registry.name.auto-grid-layout', 'Auto Grid Layout'),
         deserialize: deserializeAutoGridLayout,
       },
       {
         id: 'RowsLayout',
-        name: 'Rows Layout',
+        name: t('dashboard-scene.layout-deserializer-registry.name.rows-layout', 'Rows Layout'),
         deserialize: deserializeRowsLayout,
       },
       {
         id: 'TabsLayout',
-        name: 'Tabs Layout',
+        name: t('dashboard-scene.layout-deserializer-registry.name.tabs-layout', 'Tabs Layout'),
         deserialize: deserializeTabsLayout,
       },
     ];

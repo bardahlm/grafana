@@ -70,7 +70,10 @@ export function GroupByVariableForm({
         description={t(
           'dashboard-scene.group-by-variable-form.description-provide-dimensions-as-csv-dimension-name-dimension-id',
           'Provide dimensions as CSV: {{name}}, {{value}}',
-          { name: 'dimensionName', value: 'dimensionId' }
+          {
+            name: t('dashboard-scene.group-by-variable-form.name.dimension-name', 'dimensionName'),
+            value: 'dimensionId',
+          }
         )}
       >
         <Switch

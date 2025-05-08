@@ -22,6 +22,7 @@ import {
 } from '@grafana/data';
 import { config, locationService, logWarning } from '@grafana/runtime';
 import { notifyApp } from 'app/core/actions';
+import { t } from 'app/core/internationalization';
 import { contextSrv } from 'app/core/services/context_srv';
 import { getTimeSrv } from 'app/features/dashboard/services/TimeSrv';
 import { DashboardModel } from 'app/features/dashboard/state/DashboardModel';
@@ -167,7 +168,7 @@ export const addSystemTemplateVariables = (key: string, dashboard: DashboardMode
     const dashboardModel: DashboardVariableModel = {
       ...initialVariableModelState,
       id: '__dashboard',
-      name: '__dashboard',
+      name: t('variables.add-system-template-variables.dashboard-model.name.dashboard', '__dashboard'),
       type: 'system',
       index: -3,
       skipUrlSync: true,
@@ -197,7 +198,7 @@ export const addSystemTemplateVariables = (key: string, dashboard: DashboardMode
     const orgModel: OrgVariableModel = {
       ...initialVariableModelState,
       id: '__org',
-      name: '__org',
+      name: t('variables.add-system-template-variables.org-model.name.org', '__org'),
       type: 'system',
       index: -2,
       skipUrlSync: true,
@@ -221,7 +222,7 @@ export const addSystemTemplateVariables = (key: string, dashboard: DashboardMode
     const userModel: UserVariableModel = {
       ...initialVariableModelState,
       id: '__user',
-      name: '__user',
+      name: t('variables.add-system-template-variables.user-model.name.user', '__user'),
       type: 'system',
       index: -1,
       skipUrlSync: true,

@@ -30,7 +30,7 @@ export class ConditionalRenderingGroup extends ConditionalRenderingBase<Conditio
 
   public static serializer: ConditionalRenderingSerializerRegistryItem = {
     id: 'ConditionalRenderingGroup',
-    name: 'Group',
+    name: t('dashboard-scene.conditional-rendering-group.name.group', 'Group'),
     deserialize: this.deserialize,
   };
 

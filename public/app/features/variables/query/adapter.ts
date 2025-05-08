@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash';
 
 import { QueryVariableModel, VariableRefresh } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 
 import { dispatch } from '../../../store/store';
 import { VariableAdapter } from '../adapters';
@@ -16,8 +17,11 @@ import { initialQueryVariableModelState, queryVariableReducer } from './reducer'
 export const createQueryVariableAdapter = (): VariableAdapter<QueryVariableModel> => {
   return {
     id: 'query',
-    description: 'Variable values are fetched from a datasource query',
-    name: 'Query',
+    description: t(
+      'variables.create-query-variable-adapter.description.variable-values-fetched-datasource-query',
+      'Variable values are fetched from a datasource query'
+    ),
+    name: t('variables.create-query-variable-adapter.name.query', 'Query'),
     initialState: initialQueryVariableModelState,
     reducer: queryVariableReducer,
     picker: optionPickerFactory<QueryVariableModel>(),

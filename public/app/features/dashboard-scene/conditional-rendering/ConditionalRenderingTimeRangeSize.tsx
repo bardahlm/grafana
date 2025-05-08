@@ -17,7 +17,7 @@ export class ConditionalRenderingTimeRangeSize extends ConditionalRenderingBase<
 
   public static serializer: ConditionalRenderingSerializerRegistryItem = {
     id: 'ConditionalRenderingTimeRangeSize',
-    name: 'Time Range Size',
+    name: t('dashboard-scene.conditional-rendering-time-range-size.name.time-range-size', 'Time Range Size'),
     deserialize: this.deserialize,
   };
 

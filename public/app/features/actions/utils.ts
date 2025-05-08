@@ -15,6 +15,7 @@ import {
 } from '@grafana/data';
 import { BackendSrvRequest, getBackendSrv, config as grafanaConfig } from '@grafana/runtime';
 import { appEvents } from 'app/core/core';
+import { t } from 'app/core/internationalization';
 
 import { HttpRequestMethod } from '../../plugins/panel/canvas/panelcfg.gen';
 import { createAbsoluteUrl, RelativeUrl } from '../alerting/unified/utils/url';
@@ -127,7 +128,7 @@ const buildActionOnClick = (action: Action, replaceVariables: InterpolateFunctio
 // @TODO update return type
 export const getActionsDefaultField = (dataLinks: DataLink[] = [], actions: Action[] = []) => {
   return {
-    name: 'Default field',
+    name: t('actions.get-actions-default-field.name.default-field', 'Default field'),
     type: FieldType.string,
     config: { links: dataLinks, actions: actions },
     values: [],

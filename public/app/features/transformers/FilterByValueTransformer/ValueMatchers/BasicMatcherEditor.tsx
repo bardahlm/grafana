@@ -44,56 +44,56 @@ export function basicMatcherEditor<T = any>(
 export const getBasicValueMatchersUI = (): Array<ValueMatcherUIRegistryItem<BasicValueMatcherOptions>> => {
   return [
     {
-      name: 'Is greater',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-greater', 'Is greater'),
       id: ValueMatcherID.greater,
       component: basicMatcherEditor<string | number>({
         validator: numberOrVariableValidator,
       }),
     },
     {
-      name: 'Is greater or equal',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-greater-or-equal', 'Is greater or equal'),
       id: ValueMatcherID.greaterOrEqual,
       component: basicMatcherEditor<string | number>({
         validator: numberOrVariableValidator,
       }),
     },
     {
-      name: 'Is lower',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-lower', 'Is lower'),
       id: ValueMatcherID.lower,
       component: basicMatcherEditor<string | number>({
         validator: numberOrVariableValidator,
       }),
     },
     {
-      name: 'Is lower or equal',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-lower-or-equal', 'Is lower or equal'),
       id: ValueMatcherID.lowerOrEqual,
       component: basicMatcherEditor<string | number>({
         validator: numberOrVariableValidator,
       }),
     },
     {
-      name: 'Is equal',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-equal', 'Is equal'),
       id: ValueMatcherID.equal,
       component: basicMatcherEditor<string | number | boolean>({
         validator: () => true,
       }),
     },
     {
-      name: 'Is not equal',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-not-equal', 'Is not equal'),
       id: ValueMatcherID.notEqual,
       component: basicMatcherEditor<string | number | boolean>({
         validator: () => true,
       }),
     },
     {
-      name: 'Is Substring',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-substring', 'Is Substring'),
       id: ValueMatcherID.substring,
       component: basicMatcherEditor<string | number | boolean>({
         validator: () => true,
       }),
     },
     {
-      name: 'Is not substring',
+      name: t('transformers.get-basic-value-matchers-ui.name.is-not-substring', 'Is not substring'),
       id: ValueMatcherID.notSubstring,
       component: basicMatcherEditor<string | number | boolean>({
         validator: () => true,

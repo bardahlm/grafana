@@ -192,7 +192,11 @@ export const generateColumns = (
                 {parts.map((p) => {
                   let info = meta.locationInfo[p];
                   if (!info && p === 'general') {
-                    info = { kind: 'folder', url: '/dashboards', name: 'Dashboards' };
+                    info = {
+                      kind: 'folder',
+                      url: '/dashboards',
+                      name: t('search.generate-columns.name.dashboards', 'Dashboards'),
+                    };
                   }
 
                   if (info) {

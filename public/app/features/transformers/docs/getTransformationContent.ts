@@ -1,3 +1,5 @@
+import { t } from 'app/core/internationalization';
+
 import { transformationDocsContent, getLinkToDocs, ImageRenderType } from './content';
 
 export function getTransformationContent(id: string): { name: string; helperDocs: string } {
@@ -41,7 +43,7 @@ export function getTransformationContent(id: string): { name: string; helperDocs
 
   // If the transformation has no documentation, return an external link to the online documentation.
   return {
-    name: 'No documentation found',
+    name: t('transformers.get-transformation-content.name.no-documentation-found', 'No documentation found'),
     helperDocs: getLinkToDocs(),
   };
 }

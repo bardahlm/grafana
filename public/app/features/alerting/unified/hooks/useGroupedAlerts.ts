@@ -2,6 +2,7 @@ import { uniqBy } from 'lodash';
 import { useMemo } from 'react';
 
 import { Labels } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 import { AlertmanagerGroup } from 'app/plugins/datasource/alertmanager/types';
 
 export const useGroupedAlerts = (groups: AlertmanagerGroup[], groupBy: string[]): AlertmanagerGroup[] => {
@@ -14,7 +15,11 @@ export const useGroupedAlerts = (groups: AlertmanagerGroup[], groupBy: string[])
           if (Object.keys(group.labels).length === 0) {
             const noGroupingGroup = combinedGroups.find(({ labels }) => Object.keys(labels));
             if (!noGroupingGroup) {
-              combinedGroups.push({ alerts: group.alerts, labels: {}, receiver: { name: 'NONE' } });
+              combinedGroups.push({
+                alerts: group.alerts,
+                labels: {},
+                receiver: { name: t('alerting.use-grouped-alerts.name.none', 'NONE') },
+              });
             } else {
               noGroupingGroup.alerts = uniqBy([...noGroupingGroup.alerts, ...group.alerts], 'labels');
             }
@@ -69,7 +74,11 @@ export const useGroupedAlerts = (groups: AlertmanagerGroup[], groupBy: string[])
       } else {
         const noGroupingGroup = groupings.find((group) => Object.keys(group.labels).length === 0);
         if (!noGroupingGroup) {
-          groupings.push({ alerts: [alert], labels: {}, receiver: { name: 'NONE' } });
+          groupings.push({
+            alerts: [alert],
+            labels: {},
+            receiver: { name: t('alerting.use-grouped-alerts.name.none', 'NONE') },
+          });
         } else {
           noGroupingGroup.alerts.push(alert);
         }

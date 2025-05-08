@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { GrafanaTheme2 } from '@grafana/data';
 import { config, GrafanaBootConfig } from '@grafana/runtime';
 import { LinkButton, Stack, useStyles2 } from '@grafana/ui';
-import { Trans } from 'app/core/internationalization';
+import { Trans, t } from 'app/core/internationalization';
 import { AccessControlAction } from 'app/types';
 
 import { contextSrv } from '../../core/services/context_srv';
@@ -53,10 +53,13 @@ export const ServerStats = () => {
           <ServerStatsCard
             isLoading={isLoading}
             content={[
-              { name: 'Dashboards (starred)', value: `${stats?.dashboards} (${stats?.stars})` },
-              { name: 'Tags', value: stats?.tags },
-              { name: 'Playlists', value: stats?.playlists },
-              { name: 'Snapshots', value: stats?.snapshots },
+              {
+                name: t('admin.server-stats.name.dashboards-starred', 'Dashboards (starred)'),
+                value: `${stats?.dashboards} (${stats?.stars})`,
+              },
+              { name: t('admin.server-stats.name.tags', 'Tags'), value: stats?.tags },
+              { name: t('admin.server-stats.name.playlists', 'Playlists'), value: stats?.playlists },
+              { name: t('admin.server-stats.name.snapshots', 'Snapshots'), value: stats?.snapshots },
             ]}
             footer={
               <LinkButton href={'/dashboards'} variant={'secondary'}>
@@ -68,7 +71,7 @@ export const ServerStats = () => {
           <Stack direction="column" gap={2}>
             <ServerStatsCard
               isLoading={isLoading}
-              content={[{ name: 'Data sources', value: stats?.datasources }]}
+              content={[{ name: t('admin.server-stats.name.data-sources', 'Data sources'), value: stats?.datasources }]}
               footer={
                 hasAccessToDataSources && (
                   <LinkButton href={'/datasources'} variant={'secondary'}>
@@ -79,7 +82,7 @@ export const ServerStats = () => {
             />
             <ServerStatsCard
               isLoading={isLoading}
-              content={[{ name: 'Alerts', value: stats?.alerts }]}
+              content={[{ name: t('admin.server-stats.name.alerts', 'Alerts'), value: stats?.alerts }]}
               footer={
                 <LinkButton href={'/alerting/list'} variant={'secondary'}>
                   <Trans i18nKey="admin.server-settings.alerts-button">Manage alerts</Trans>
@@ -90,10 +93,13 @@ export const ServerStats = () => {
           <ServerStatsCard
             isLoading={isLoading}
             content={[
-              { name: 'Organisations', value: stats?.orgs },
-              { name: 'Users total', value: stats?.users },
-              { name: 'Active sessions', value: stats?.activeSessions },
-              { name: 'Active users in last 30 days', value: stats?.activeUsers },
+              { name: t('admin.server-stats.name.organisations', 'Organisations'), value: stats?.orgs },
+              { name: t('admin.server-stats.name.users-total', 'Users total'), value: stats?.users },
+              { name: t('admin.server-stats.name.active-sessions', 'Active sessions'), value: stats?.activeSessions },
+              {
+                name: t('admin.server-stats.name.active-users-in-last-days', 'Active users in last 30 days'),
+                value: stats?.activeUsers,
+              },
               ...getAnonymousStatsContent(stats, config),
             ]}
             footer={
@@ -117,7 +123,7 @@ const getAnonymousStatsContent = (stats: ServerStat | null, config: GrafanaBootC
   if (!config.anonymousDeviceLimit) {
     return [
       {
-        name: 'Active anonymous devices',
+        name: t('admin.get-anonymous-stats-content.name.active-anonymous-devices', 'Active anonymous devices'),
         value: `${stats.activeDevices}`,
         tooltip: 'Detected devices that are not logged in, in last 30 days.',
       },
@@ -125,7 +131,7 @@ const getAnonymousStatsContent = (stats: ServerStat | null, config: GrafanaBootC
   } else {
     return [
       {
-        name: 'Active anonymous devices',
+        name: t('admin.get-anonymous-stats-content.name.active-anonymous-devices', 'Active anonymous devices'),
         value: `${stats.activeDevices} / ${config.anonymousDeviceLimit}`,
         tooltip: 'Detected devices that are not logged in, in last 30 days.',
         highlight: stats.activeDevices > config.anonymousDeviceLimit,

@@ -3,6 +3,7 @@ import { config, getDataSourceSrv } from '@grafana/runtime';
 import { AdHocFiltersVariable, dataLayers, sceneGraph, sceneUtils, VizPanel } from '@grafana/scenes';
 import { DataSourceRef } from '@grafana/schema';
 import { AdHocFilterItem, PanelContext } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 import { deleteAnnotation, saveAnnotation, updateAnnotation } from 'app/features/annotations/api';
 
 import { dashboardSceneGraph } from '../utils/dashboardSceneGraph';
@@ -175,7 +176,7 @@ export function getAdHocFilterVariableFor(scene: DashboardScene, ds: DataSourceR
   }
 
   const newVariable = new AdHocFiltersVariable({
-    name: 'Filters',
+    name: t('dashboard-scene.get-ad-hoc-filter-variable-for.new-variable.name.filters', 'Filters'),
     datasource: ds,
     supportsMultiValueOperators: Boolean(getDataSourceSrv().getInstanceSettings(ds)?.meta.multiValueFilterOperators),
     useQueriesAsFilterForOptions: true,

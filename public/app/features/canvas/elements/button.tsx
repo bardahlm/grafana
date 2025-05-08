@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { GrafanaTheme2, PluginState } from '@grafana/data';
 import { TextDimensionMode } from '@grafana/schema';
 import { Button, Spinner, useStyles2 } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 import { DimensionContext } from 'app/features/dimensions/context';
 import { ColorDimensionEditor } from 'app/features/dimensions/editors';
 import { TextDimensionEditor } from 'app/features/dimensions/editors/TextDimensionEditor';
@@ -169,21 +170,21 @@ export const buttonItem: CanvasElementItem<ButtonConfig, ButtonData> = {
         category,
         id: 'styleSelector',
         path: 'config.style',
-        name: 'Style',
+        name: t('canvas.button-item.name.style', 'Style'),
         editor: ButtonStyleEditor,
       })
       .addCustomEditor({
         category,
         id: 'textSelector',
         path: 'config.text',
-        name: 'Text',
+        name: t('canvas.button-item.name.text', 'Text'),
         editor: TextDimensionEditor,
       })
       .addCustomEditor({
         category,
         id: 'config.color',
         path: 'config.color',
-        name: 'Text color',
+        name: t('canvas.button-item.name.text-color', 'Text color'),
         editor: ColorDimensionEditor,
         settings: {},
         defaultValue: {},
@@ -191,12 +192,12 @@ export const buttonItem: CanvasElementItem<ButtonConfig, ButtonData> = {
       .addRadio({
         category,
         path: 'config.align',
-        name: 'Align text',
+        name: t('canvas.button-item.name.align-text', 'Align text'),
         settings: {
           options: [
-            { value: Align.Left, label: 'Left' },
-            { value: Align.Center, label: 'Center' },
-            { value: Align.Right, label: 'Right' },
+            { value: Align.Left, label: t('canvas.button-item.label.left', 'Left') },
+            { value: Align.Center, label: t('canvas.button-item.label.center', 'Center') },
+            { value: Align.Right, label: t('canvas.button-item.label.right', 'Right') },
           ],
         },
         defaultValue: Align.Left,
@@ -204,16 +205,16 @@ export const buttonItem: CanvasElementItem<ButtonConfig, ButtonData> = {
       .addNumberInput({
         category,
         path: 'config.size',
-        name: 'Text size',
+        name: t('canvas.button-item.name.text-size', 'Text size'),
         settings: {
-          placeholder: 'Auto',
+          placeholder: t('canvas.button-item.placeholder.auto', 'Auto'),
         },
       })
       .addCustomEditor({
         category,
         id: 'apiSelector',
         path: 'config.api',
-        name: 'API',
+        name: t('canvas.button-item.name.api', 'API'),
         editor: APIEditor,
       });
   },

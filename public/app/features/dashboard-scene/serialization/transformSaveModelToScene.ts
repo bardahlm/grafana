@@ -22,6 +22,7 @@ import {
 } from '@grafana/scenes';
 import { isWeekStart } from '@grafana/ui';
 import { contextSrv } from 'app/core/core';
+import { t } from 'app/core/internationalization';
 import { K8S_V1_DASHBOARD_API_CONFIG } from 'app/features/dashboard/api/v1';
 import { DashboardModel } from 'app/features/dashboard/state/DashboardModel';
 import { PanelModel } from 'app/features/dashboard/state/PanelModel';
@@ -218,7 +219,7 @@ export function createDashboardSceneFromDashboardModel(oldModel: DashboardModel,
   if (shouldUseAlertStatesLayer) {
     alertStatesLayer = new AlertStatesDataLayer({
       key: 'alert-states',
-      name: 'Alert States',
+      name: t('dashboard-scene.create-dashboard-scene-from-dashboard-model.name.alert-states', 'Alert States'),
     });
   }
 

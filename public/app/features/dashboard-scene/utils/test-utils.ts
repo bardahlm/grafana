@@ -12,6 +12,7 @@ import {
   TestVariable,
   VizPanel,
 } from '@grafana/scenes';
+import { t } from 'app/core/internationalization';
 import { DashboardLoaderSrv, setDashboardLoaderSrv } from 'app/features/dashboard/services/DashboardLoaderSrv';
 import { ALL_VARIABLE_TEXT, ALL_VARIABLE_VALUE } from 'app/features/variables/constants';
 import { DashboardDTO } from 'app/types';
@@ -141,7 +142,7 @@ export function buildPanelRepeaterScene(options: SceneOptions, source?: VizPanel
     body:
       source ??
       new VizPanel({
-        title: 'Panel $server',
+        title: t('dashboard-scene.build-panel-repeater-scene.with-repeat.title.panel-server', 'Panel $server'),
         pluginId: 'timeseries',
       }),
     x: options.x || 0,
@@ -154,7 +155,7 @@ export function buildPanelRepeaterScene(options: SceneOptions, source?: VizPanel
     width: 10,
     height: 10,
     body: new VizPanel({
-      title: 'Panel $server',
+      title: t('dashboard-scene.build-panel-repeater-scene.without-repeat.title.panel-server', 'Panel $server'),
       pluginId: 'timeseries',
       titleItems: [new VizPanelLinks({ menu: new VizPanelLinksMenu({}) })],
     }),
@@ -166,7 +167,7 @@ export function buildPanelRepeaterScene(options: SceneOptions, source?: VizPanel
   });
 
   const panelRepeatVariable = new TestVariable({
-    name: 'server',
+    name: t('dashboard-scene.build-panel-repeater-scene.panel-repeat-variable.name.server', 'server'),
     query: 'A.*',
     value: ALL_VARIABLE_VALUE,
     text: ALL_VARIABLE_TEXT,
@@ -174,18 +175,18 @@ export function buildPanelRepeaterScene(options: SceneOptions, source?: VizPanel
     includeAll: true,
     delayMs: options.variableQueryTime,
     optionsToReturn: [
-      { label: 'A', value: '1' },
-      { label: 'B', value: '2' },
-      { label: 'C', value: '3' },
-      { label: 'D', value: '4' },
-      { label: 'E', value: '5' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.panel-repeat-variable.label.a', 'A'), value: '1' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.panel-repeat-variable.label.b', 'B'), value: '2' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.panel-repeat-variable.label.c', 'C'), value: '3' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.panel-repeat-variable.label.d', 'D'), value: '4' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.panel-repeat-variable.label.e', 'E'), value: '5' },
     ].slice(0, options.numberOfOptions),
     throwError: defaults.throwError,
     refresh: options.variableRefresh,
   });
 
   const rowRepeatVariable = new TestVariable({
-    name: 'handler',
+    name: t('dashboard-scene.build-panel-repeater-scene.row-repeat-variable.name.handler', 'handler'),
     query: 'A.*',
     value: ALL_VARIABLE_VALUE,
     text: ALL_VARIABLE_TEXT,
@@ -193,11 +194,11 @@ export function buildPanelRepeaterScene(options: SceneOptions, source?: VizPanel
     includeAll: true,
     delayMs: options.variableQueryTime,
     optionsToReturn: [
-      { label: 'AA', value: '11' },
-      { label: 'BB', value: '22' },
-      { label: 'CC', value: '33' },
-      { label: 'DD', value: '44' },
-      { label: 'EE', value: '55' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.row-repeat-variable.label.aa', 'AA'), value: '11' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.row-repeat-variable.label.bb', 'BB'), value: '22' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.row-repeat-variable.label.cc', 'CC'), value: '33' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.row-repeat-variable.label.dd', 'DD'), value: '44' },
+      { label: t('dashboard-scene.build-panel-repeater-scene.row-repeat-variable.label.ee', 'EE'), value: '55' },
     ].slice(0, options.numberOfOptions),
     throwError: defaults.throwError,
   });

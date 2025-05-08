@@ -1,5 +1,6 @@
 import { Chance } from 'chance';
 
+import { t } from 'app/core/internationalization';
 import {
   GrafanaAlertStateDecision,
   GrafanaPromRulesResponse,
@@ -13,7 +14,7 @@ export function getRulerRulesResponse(folderName: string, folderUid: string, rul
   return {
     [folderName]: [
       {
-        name: 'foo',
+        name: t('browse-dashboards.get-ruler-rules-response.name.foo', 'foo'),
         interval: '1m',
         rules: [
           {
@@ -68,7 +69,7 @@ export function getPrometheusRulesResponse(
     data: {
       groups: [
         {
-          name: 'foo',
+          name: t('browse-dashboards.get-prometheus-rules-response.name.foo', 'foo'),
           file: folderName,
           folderUid: folderUid,
           rules: [

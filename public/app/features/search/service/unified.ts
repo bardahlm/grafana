@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash';
 import { DataFrame, DataFrameView, getDisplayProcessor, SelectableValue, toDataFrame } from '@grafana/data';
 import { config, getBackendSrv } from '@grafana/runtime';
 import { TermCount } from 'app/core/components/TagFilter/TagFilter';
+import { t } from 'app/core/internationalization';
 import kbn from 'app/core/utils/kbn';
 
 import { getAPINamespace } from '../../../api/utils';
@@ -93,8 +94,11 @@ export class UnifiedSearcher implements GrafanaSearcher {
   // TODO: Implement this correctly
   getSortOptions(): Promise<SelectableValue[]> {
     const opts: SelectableValue[] = [
-      { value: folderViewSort, label: 'Alphabetically (A-Z)' },
-      { value: '-name_sort', label: 'Alphabetically (Z-A)' },
+      {
+        value: folderViewSort,
+        label: t('search.unified-searcher.opts.label.alphabetically-az', 'Alphabetically (A-Z)'),
+      },
+      { value: '-name_sort', label: t('search.unified-searcher.opts.label.alphabetically-za', 'Alphabetically (Z-A)') },
     ];
 
     if (config.licenseInfo.enabledFeatures.analytics) {
@@ -357,12 +361,12 @@ async function loadLocationInfo(): Promise<Record<string, LocationInfo>> {
       const locationInfo: Record<string, LocationInfo> = {
         general: {
           kind: 'folder',
-          name: 'Dashboards',
+          name: t('search.load-location-info.rsp.location-info.name.dashboards', 'Dashboards'),
           url: '/dashboards',
         }, // share location info with everyone
         sharedwithme: {
           kind: 'sharedwithme',
-          name: 'Shared with me',
+          name: t('search.load-location-info.rsp.location-info.name.shared-with-me', 'Shared with me'),
           url: '',
         },
       };

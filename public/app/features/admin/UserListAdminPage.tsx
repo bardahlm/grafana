@@ -86,10 +86,18 @@ const UserListAdminPageUnConnected = ({
           />
           <RadioButtonGroup
             options={[
-              { label: 'All users', value: false },
-              { label: 'Active last 30 days', value: true },
+              { label: t('admin.user-list-admin-page-un-connected.label.all-users', 'All users'), value: false },
+              {
+                label: t('admin.user-list-admin-page-un-connected.label.active-last-days', 'Active last 30 days'),
+                value: true,
+              },
             ]}
-            onChange={(value) => changeFilter({ name: 'activeLast30Days', value })}
+            onChange={(value) =>
+              changeFilter({
+                name: t('admin.user-list-admin-page-un-connected.name.active-last-days', 'activeLast30Days'),
+                value,
+              })
+            }
             value={filters.find((f) => f.name === 'activeLast30Days')?.value}
             className={styles.filter}
           />

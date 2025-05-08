@@ -12,6 +12,7 @@ import {
 import { fieldIndexComparer } from '@grafana/data/internal';
 import { MappingType, ThresholdsMode } from '@grafana/schema';
 import { useTheme2 } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 
 import { labelsMatchMatchers } from '../../../utils/alertmanager';
 import { parsePromQLStyleMatcherLooseSafe } from '../../../utils/matchers';
@@ -91,7 +92,7 @@ export function logRecordsToDataFrame(
   // There is an artificial element at the end meaning Date.now()
   // It exist to draw the state change from when it happened to the current time
   const timeField: DataFrameField = {
-    name: 'time',
+    name: t('alerting.log-records-to-data-frame.time-field.name.time', 'time'),
     type: FieldType.time,
     values: [...records.map((record) => record.timestamp), Date.now()],
     config: { displayName: 'Time', custom: { fillOpacity: 100 } },
@@ -109,7 +110,7 @@ export function logRecordsToDataFrame(
         values: timeField.values.map((_, i) => timeField.values[timeIndex[i]]),
       },
       {
-        name: 'State',
+        name: t('alerting.log-records-to-data-frame.frame.name.state', 'State'),
         type: FieldType.string,
         values: stateValues.map((_, i) => stateValues[timeIndex[i]]),
         config: {

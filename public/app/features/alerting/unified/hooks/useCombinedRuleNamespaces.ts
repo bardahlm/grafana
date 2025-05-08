@@ -1,6 +1,7 @@
 import { countBy, isEqual } from 'lodash';
 import { useMemo, useRef } from 'react';
 
+import { t } from 'app/core/internationalization';
 import {
   AlertGroupTotals,
   AlertInstanceTotalState,
@@ -227,7 +228,7 @@ export function flattenGrafanaManagedRules(namespaces: CombinedRuleNamespace[]) 
 
     // add default group with ungrouped rules
     newNamespace.groups.push({
-      name: 'default',
+      name: t('alerting.flatten-grafana-managed-rules.name.default', 'default'),
       rules: sortRulesByName(namespace.groups.flatMap((group) => group.rules)),
       totals: calculateAllGroupsTotals(namespace.groups),
     });

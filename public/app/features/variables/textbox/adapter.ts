@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash';
 
 import { TextBoxVariableModel } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 
 import { dispatch } from '../../../store/store';
 import { VariableAdapter } from '../adapters';
@@ -16,7 +17,7 @@ export const createTextBoxVariableAdapter = (): VariableAdapter<TextBoxVariableM
   return {
     id: 'textbox',
     description: 'Define a textbox variable, where users can enter any arbitrary string',
-    name: 'Text box',
+    name: t('variables.create-text-box-variable-adapter.name.text-box', 'Text box'),
     initialState: initialTextBoxVariableModelState,
     reducer: textBoxVariableReducer,
     picker: TextBoxVariablePicker,

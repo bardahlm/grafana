@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { GrafanaTheme2 } from '@grafana/data';
 import { config } from 'app/core/config';
+import { t } from 'app/core/internationalization';
 import { DimensionContext } from 'app/features/dimensions';
 import { ColorDimensionEditor } from 'app/features/dimensions/editors/ColorDimensionEditor';
 import { TextDimensionEditor } from 'app/features/dimensions/editors/TextDimensionEditor';
@@ -135,14 +136,14 @@ export const parallelogramItem: CanvasElementItem = {
         category,
         id: 'textSelector',
         path: 'config.text',
-        name: 'Text',
+        name: t('canvas.parallelogram-item.name.text', 'Text'),
         editor: TextDimensionEditor,
       })
       .addCustomEditor({
         category,
         id: 'config.color',
         path: 'config.color',
-        name: 'Text color',
+        name: t('canvas.parallelogram-item.name.text-color', 'Text color'),
         editor: ColorDimensionEditor,
         settings: {},
         defaultValue: {},
@@ -150,12 +151,12 @@ export const parallelogramItem: CanvasElementItem = {
       .addRadio({
         category,
         path: 'config.align',
-        name: 'Align text',
+        name: t('canvas.parallelogram-item.name.align-text', 'Align text'),
         settings: {
           options: [
-            { value: Align.Left, label: 'Left' },
-            { value: Align.Center, label: 'Center' },
-            { value: Align.Right, label: 'Right' },
+            { value: Align.Left, label: t('canvas.parallelogram-item.label.left', 'Left') },
+            { value: Align.Center, label: t('canvas.parallelogram-item.label.center', 'Center') },
+            { value: Align.Right, label: t('canvas.parallelogram-item.label.right', 'Right') },
           ],
         },
         defaultValue: Align.Left,
@@ -163,12 +164,12 @@ export const parallelogramItem: CanvasElementItem = {
       .addRadio({
         category,
         path: 'config.valign',
-        name: 'Vertical align',
+        name: t('canvas.parallelogram-item.name.vertical-align', 'Vertical align'),
         settings: {
           options: [
-            { value: VAlign.Top, label: 'Top' },
-            { value: VAlign.Middle, label: 'Middle' },
-            { value: VAlign.Bottom, label: 'Bottom' },
+            { value: VAlign.Top, label: t('canvas.parallelogram-item.label.top', 'Top') },
+            { value: VAlign.Middle, label: t('canvas.parallelogram-item.label.middle', 'Middle') },
+            { value: VAlign.Bottom, label: t('canvas.parallelogram-item.label.bottom', 'Bottom') },
           ],
         },
         defaultValue: VAlign.Middle,
@@ -176,9 +177,9 @@ export const parallelogramItem: CanvasElementItem = {
       .addNumberInput({
         category,
         path: 'config.size',
-        name: 'Text size',
+        name: t('canvas.parallelogram-item.name.text-size', 'Text size'),
         settings: {
-          placeholder: 'Auto',
+          placeholder: t('canvas.parallelogram-item.placeholder.auto', 'Auto'),
         },
       });
   },

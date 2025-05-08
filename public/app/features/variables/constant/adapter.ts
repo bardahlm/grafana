@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash';
 
 import { ConstantVariableModel } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 
 import { dispatch } from '../../../store/store';
 import { VariableAdapter } from '../adapters';
@@ -16,7 +17,7 @@ export const createConstantVariableAdapter = (): VariableAdapter<ConstantVariabl
   return {
     id: 'constant',
     description: 'Define a hidden constant variable, useful for metric prefixes in dashboards you want to share.',
-    name: 'Constant',
+    name: t('variables.create-constant-variable-adapter.name.constant', 'Constant'),
     initialState: initialConstantVariableModelState,
     reducer: constantVariableReducer,
     picker: optionPickerFactory<ConstantVariableModel>(),

@@ -2,6 +2,7 @@ import uFuzzy from '@leeoniya/ufuzzy';
 
 import { DataFrameView, SelectableValue } from '@grafana/data';
 import { TermCount } from 'app/core/components/TagFilter/TagFilter';
+import { t } from 'app/core/internationalization';
 
 import { DashboardQueryResult, GrafanaSearcher, QueryResponse, SearchQuery } from './types';
 
@@ -46,7 +47,9 @@ export class FrontendSearcher implements GrafanaSearcher {
       } catch (e) {
         // delete the cache key so that the next request will retry
         this.cache.delete(key);
-        return new FullResultCache(new DataFrameView({ name: 'error', fields: [], length: 0 }));
+        return new FullResultCache(
+          new DataFrameView({ name: t('search.frontend-searcher.name.error', 'error'), fields: [], length: 0 })
+        );
       }
     }
 

@@ -1,4 +1,5 @@
 import { RawQuery } from '@grafana/plugin-ui';
+import { t } from 'app/core/internationalization';
 import lokiGrammar from 'app/plugins/datasource/loki/syntax';
 
 interface Props {
@@ -8,7 +9,10 @@ interface Props {
 const LokiQueryPreview = ({ query }: Props) => {
   return (
     <pre>
-      <RawQuery query={query} language={{ grammar: lokiGrammar, name: 'promql' }} />
+      <RawQuery
+        query={query}
+        language={{ grammar: lokiGrammar, name: t('alerting.loki-query-preview.name.promql', 'promql') }}
+      />
     </pre>
   );
 };

@@ -11,6 +11,7 @@ import {
   TestDataSourceResponse,
 } from '@grafana/data';
 import { RuntimeDataSource, SceneDataQuery } from '@grafana/scenes';
+import { t } from 'app/core/internationalization';
 
 import { ExtensionsLog, ExtensionsLogItem } from './log';
 
@@ -47,7 +48,7 @@ export class ExtensionsLogDataSource extends RuntimeDataSource {
   }
 
   testDatasource(): Promise<TestDataSourceResponse> {
-    return Promise.resolve({ status: 'success', message: 'OK' });
+    return Promise.resolve({ status: 'success', message: t('plugins.extensions-log-data-source.message.ok', 'OK') });
   }
 }
 
@@ -65,37 +66,37 @@ function createFrame(query: SceneDataQuery, item: ExtensionsLogItem, existing?: 
     meta: { type: DataFrameType.LogLines },
     fields: [
       {
-        name: 'timestamp',
+        name: t('plugins.create-frame.name.timestamp', 'timestamp'),
         type: FieldType.time,
         values: [item.timestamp, ...timestamps],
       },
       {
-        name: 'body',
+        name: t('plugins.create-frame.name.body', 'body'),
         type: FieldType.string,
         values: [item.message, ...messages],
       },
       {
-        name: 'severity',
+        name: t('plugins.create-frame.name.severity', 'severity'),
         type: FieldType.string,
         values: [item.level, ...levels],
       },
       {
-        name: 'id',
+        name: t('plugins.create-frame.name.id', 'id'),
         type: FieldType.string,
         values: [item.id, ...ids],
       },
       {
-        name: 'labels',
+        name: t('plugins.create-frame.name.labels', 'labels'),
         type: FieldType.other,
         values: [item.labels, ...labels],
       },
       {
-        name: 'pluginId',
+        name: t('plugins.create-frame.name.plugin-id', 'pluginId'),
         type: FieldType.string,
         values: [item.pluginId ?? null, ...pluginIds],
       },
       {
-        name: 'extensionPointId',
+        name: t('plugins.create-frame.name.extension-point-id', 'extensionPointId'),
         type: FieldType.string,
         values: [item.extensionPointId ?? null, ...extensionPointIds],
       },

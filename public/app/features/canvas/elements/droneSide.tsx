@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 import { ScalarDimensionConfig } from '@grafana/schema';
 import { useStyles2 } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 import { DimensionContext } from 'app/features/dimensions';
 import { ScalarDimensionEditor } from 'app/features/dimensions/editors';
 
@@ -113,7 +114,7 @@ export const droneSideItem: CanvasElementItem = {
       category,
       id: 'pitchAngle',
       path: 'config.pitchAngle',
-      name: 'Pitch Angle',
+      name: t('canvas.drone-side-item.name.pitch-angle', 'Pitch Angle'),
       editor: ScalarDimensionEditor,
     });
   },

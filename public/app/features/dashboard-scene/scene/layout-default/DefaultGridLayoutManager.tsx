@@ -291,7 +291,7 @@ export class DefaultGridLayoutManager
 
     const row = new SceneGridRow({
       key: getVizPanelKeyForPanelId(id),
-      title: 'Row title',
+      title: t('dashboard-scene.default-grid-layout-manager.row.title.row-title', 'Row title'),
       actions: new RowActions({}),
       y: 0,
     });

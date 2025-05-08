@@ -12,6 +12,7 @@ import {
   SystemConfigOverrideRule,
 } from '@grafana/data';
 import { SeriesVisibilityChangeMode } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 
 const displayOverrideRef = 'hideSeriesFrom';
 const isHideSeriesOverride = isSystemOverrideWithRef(displayOverrideRef);
@@ -97,7 +98,7 @@ function createOverride(
     value: {
       viz: true,
       legend: false,
-      tooltip: false,
+      tooltip: t('dashboard.create-override.tooltip.false', 'false'),
     },
   };
 
@@ -118,7 +119,7 @@ function createOverride(
         value: {
           viz: true,
           legend: false,
-          tooltip: false,
+          tooltip: t('dashboard.create-override.tooltip.false', 'false'),
         },
       },
     ],

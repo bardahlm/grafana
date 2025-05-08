@@ -14,6 +14,7 @@ import {
   VizPanel,
   VizPanelState,
 } from '@grafana/scenes';
+import { t } from 'app/core/internationalization';
 import { OptionsPaneCategoryDescriptor } from 'app/features/dashboard/components/PanelEditor/OptionsPaneCategoryDescriptor';
 
 import { ConditionalRendering } from '../../conditional-rendering/ConditionalRendering';
@@ -83,7 +84,7 @@ export class AutoGridItem extends SceneObjectBase<AutoGridItemState> implements 
     const variable =
       sceneGraph.lookupVariable(this.state.variableName, this) ??
       new CustomVariable({
-        name: '_____default_sys_repeat_var_____',
+        name: t('dashboard-scene.auto-grid-item.variable.name.defaultsysrepeatvar', '_____default_sys_repeat_var_____'),
         options: [],
         value: '',
         text: '',

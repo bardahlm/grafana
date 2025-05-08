@@ -74,7 +74,7 @@ export function rangeMatcherEditor<T = string | number>(
 export const getRangeValueMatchersUI = (): Array<ValueMatcherUIRegistryItem<RangeValueMatcherOptions>> => {
   return [
     {
-      name: 'Is between',
+      name: t('transformers.get-range-value-matchers-ui.name.is-between', 'Is between'),
       id: ValueMatcherID.between,
       component: rangeMatcherEditor<string | number>({
         validator: numberOrVariableValidator,

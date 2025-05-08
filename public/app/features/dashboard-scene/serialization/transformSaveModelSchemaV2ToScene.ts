@@ -40,6 +40,7 @@ import {
   TextVariableKind,
 } from '@grafana/schema/dist/esm/schema/dashboard/v2alpha1/types.spec.gen';
 import { DEFAULT_ANNOTATION_COLOR } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 import {
   AnnoKeyCreatedBy,
   AnnoKeyFolder,
@@ -519,7 +520,10 @@ function getGrafanaBuiltInAnnotationDataLayer(dashboard: DashboardV2Spec) {
     kind: 'AnnotationQuery',
     spec: {
       datasource: { uid: '-- Grafana --', type: 'grafana' },
-      name: 'Annotations & Alerts',
+      name: t(
+        'dashboard-scene.get-grafana-built-in-annotation-data-layer.grafana-built-annotation.name.annotations-alerts',
+        'Annotations & Alerts'
+      ),
       iconColor: DEFAULT_ANNOTATION_COLOR,
       enable: true,
       hide: true,

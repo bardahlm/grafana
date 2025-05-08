@@ -7,6 +7,7 @@ import { config, setPluginImportUtils } from '@grafana/runtime';
 import { sceneGraph } from '@grafana/scenes';
 import { defaultDashboard } from '@grafana/schema';
 import { AppChrome } from 'app/core/components/AppChrome/AppChrome';
+import { t } from 'app/core/internationalization';
 import { transformSaveModelToScene } from 'app/features/dashboard-scene/serialization/transformSaveModelToScene';
 import { DashboardDataDTO, DashboardDTO, DashboardMeta } from 'app/types';
 
@@ -20,9 +21,9 @@ const getDashboardDTO: (
 ) => DashboardDTO = (overrideDashboard, overrideMeta) => ({
   dashboard: {
     ...defaultDashboard,
-    title: 'hello',
+    title: t('scopes.get-dashboard-dto.title.hello', 'hello'),
     uid: 'dash-1',
-    description: 'hello description',
+    description: t('scopes.get-dashboard-dto.description.hello-description', 'hello description'),
     templating: {
       list: [
         {
@@ -31,7 +32,7 @@ const getDashboardDTO: (
             uid: 'grafana',
           },
           filters: [],
-          name: 'Filters',
+          name: t('scopes.get-dashboard-dto.name.filters', 'Filters'),
           type: 'adhoc',
         },
         {
@@ -44,8 +45,8 @@ const getDashboardDTO: (
             uid: 'grafana',
           },
           description: '',
-          label: 'Group By',
-          name: 'groupBy',
+          label: t('scopes.get-dashboard-dto.label.group-by', 'Group By'),
+          name: t('scopes.get-dashboard-dto.name.group-by', 'groupBy'),
           type: 'groupby',
         },
         {
@@ -54,7 +55,7 @@ const getDashboardDTO: (
             value: ['1'],
           },
           multi: true,
-          name: 'myVar',
+          name: t('scopes.get-dashboard-dto.name.my-var', 'myVar'),
           options: [
             {
               selected: true,
@@ -76,7 +77,7 @@ const getDashboardDTO: (
             value: ['1'],
           },
           multi: true,
-          name: 'myVar2',
+          name: t('scopes.get-dashboard-dto.name.my-var2', 'myVar2'),
           options: [
             {
               selected: true,
@@ -152,7 +153,7 @@ const getDashboardDTO: (
             refId: 'A',
           },
         ],
-        title: 'Panel Title',
+        title: t('scopes.get-dashboard-dto.title.panel-title', 'Panel Title'),
         type: 'table',
       },
     ],

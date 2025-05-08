@@ -1,6 +1,7 @@
 import { DataFrame, DataFrameView, FieldType, getDisplayProcessor, SelectableValue } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import { TermCount } from 'app/core/components/TagFilter/TagFilter';
+import { t } from 'app/core/internationalization';
 import { backendSrv } from 'app/core/services/backend_srv';
 import { PermissionLevelString } from 'app/types';
 
@@ -33,7 +34,7 @@ export class SQLSearcher implements GrafanaSearcher {
   locationInfo: Record<string, LocationInfoEXT> = {
     general: {
       kind: 'folder',
-      name: 'Dashboards',
+      name: t('search.sqlsearcher.name.dashboards', 'Dashboards'),
       url: '/dashboards',
     },
   }; // share location info with everyone
@@ -200,14 +201,29 @@ export class SQLSearcher implements GrafanaSearcher {
 
     const data: DataFrame = {
       fields: [
-        { name: 'kind', type: FieldType.string, config: {}, values: kind },
-        { name: 'name', type: FieldType.string, config: {}, values: name },
-        { name: 'uid', type: FieldType.string, config: {}, values: uid },
-        { name: 'url', type: FieldType.string, config: {}, values: url },
-        { name: 'tags', type: FieldType.other, config: {}, values: tags },
-        { name: 'location', type: FieldType.string, config: {}, values: location },
-        { name: 'isDeleted', type: FieldType.boolean, config: {}, values: isDeleted },
-        { name: 'permanentlyDeleteDate', type: FieldType.time, config: {}, values: permanentlyDeleteDate },
+        { name: t('search.sqlsearcher.data.name.kind', 'kind'), type: FieldType.string, config: {}, values: kind },
+        { name: t('search.sqlsearcher.data.name.name', 'name'), type: FieldType.string, config: {}, values: name },
+        { name: t('search.sqlsearcher.data.name.uid', 'uid'), type: FieldType.string, config: {}, values: uid },
+        { name: t('search.sqlsearcher.data.name.url', 'url'), type: FieldType.string, config: {}, values: url },
+        { name: t('search.sqlsearcher.data.name.tags', 'tags'), type: FieldType.other, config: {}, values: tags },
+        {
+          name: t('search.sqlsearcher.data.name.location', 'location'),
+          type: FieldType.string,
+          config: {},
+          values: location,
+        },
+        {
+          name: t('search.sqlsearcher.data.name.is-deleted', 'isDeleted'),
+          type: FieldType.boolean,
+          config: {},
+          values: isDeleted,
+        },
+        {
+          name: t('search.sqlsearcher.data.name.permanently-delete-date', 'permanentlyDeleteDate'),
+          type: FieldType.time,
+          config: {},
+          values: permanentlyDeleteDate,
+        },
       ],
       length: name.length,
       meta: {

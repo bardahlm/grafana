@@ -11,6 +11,7 @@ import {
   LibraryPanelRef,
 } from '@grafana/schema/dist/esm/schema/dashboard/v2alpha1/types.spec.gen';
 import config from 'app/core/config';
+import { t } from 'app/core/internationalization';
 import { DashboardModel } from 'app/features/dashboard/state/DashboardModel';
 import { PanelModel, GridPos } from 'app/features/dashboard/state/PanelModel';
 import { getLibraryPanel } from 'app/features/library-panels/state/api';
@@ -249,7 +250,7 @@ export async function makeExportableV1(dashboard: DashboardModel) {
     requires['grafana'] = {
       type: 'grafana',
       id: 'grafana',
-      name: 'Grafana',
+      name: t('dashboard-scene.make-exportable-v1.name.grafana', 'Grafana'),
       version: config.buildInfo.version,
     };
 

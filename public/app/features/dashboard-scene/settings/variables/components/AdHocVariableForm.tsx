@@ -72,7 +72,10 @@ export function AdHocVariableForm({
             description={t(
               'dashboard-scene.ad-hoc-variable-form.description-provide-dimensions-as-csv-dimension-name-dimension-id',
               'Provide dimensions as CSV: {{name}}, {{value}}',
-              { name: 'dimensionName', value: 'dimensionId' }
+              {
+                name: t('dashboard-scene.ad-hoc-variable-form.name.dimension-name', 'dimensionName'),
+                value: 'dimensionId',
+              }
             )}
           >
             <Switch

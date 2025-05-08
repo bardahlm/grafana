@@ -12,6 +12,7 @@ import {
   toDataFrame,
 } from '@grafana/data';
 import { config, getBackendSrv } from '@grafana/runtime';
+import { t } from 'app/core/internationalization';
 import { GRAFANA_DATASOURCE_NAME } from 'app/features/alerting/unified/utils/datasource';
 
 import { GrafanaQueryType } from '../../../../plugins/datasource/grafana/types';
@@ -23,7 +24,7 @@ export class PublicAnnotationsDataSource extends DataSourceApi<DataQuery, DataSo
     let meta = {} as DataSourcePluginMeta;
 
     super({
-      name: 'public-ds',
+      name: t('query.public-annotations-data-source.name.publicds', 'public-ds'),
       id: 0,
       type: 'public-ds',
       meta,

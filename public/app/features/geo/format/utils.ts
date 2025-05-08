@@ -2,6 +2,7 @@ import { Geometry, GeometryCollection, LineString, Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
 
 import { Field, FieldConfig, FieldType } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 import { getCenterPoint } from 'app/features/transformers/spatial/utils';
 
 import { Gazetteer } from '../gazetteer/gazetteer';
@@ -39,7 +40,7 @@ export function pointFieldFromLonLat(lon: Field, lat: Field): Field<Geometry | u
   }
 
   return {
-    name: 'Point',
+    name: t('geo.point-field-from-lon-lat.name.point', 'Point'),
     type: FieldType.geo,
     values: buffer,
     config: hiddenTooltipField,
@@ -53,7 +54,7 @@ export function getGeoFieldFromGazetteer(gaz: Gazetteer, field: Field<string>): 
     geo[i] = gaz.find(field.values[i])?.geometry();
   }
   return {
-    name: 'Geometry',
+    name: t('geo.get-geo-field-from-gazetteer.name.geometry', 'Geometry'),
     type: FieldType.geo,
     values: geo,
     config: hiddenTooltipField,
@@ -87,7 +88,7 @@ export function createGeometryCollection(
     }
   }
   return {
-    name: 'Geometry',
+    name: t('geo.create-geometry-collection.name.geometry', 'Geometry'),
     type: FieldType.geo,
     values: geo,
     config: hiddenTooltipField,
@@ -117,7 +118,7 @@ export function createLineBetween(
     }
   }
   return {
-    name: 'Geometry',
+    name: t('geo.create-line-between.name.geometry', 'Geometry'),
     type: FieldType.geo,
     values: geo,
     config: hiddenTooltipField,

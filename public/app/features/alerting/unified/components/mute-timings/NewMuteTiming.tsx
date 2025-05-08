@@ -1,3 +1,5 @@
+import { t } from 'app/core/internationalization';
+
 import { withPageErrorBoundary } from '../../withPageErrorBoundary';
 import { AlertmanagerPageWrapper } from '../AlertingPageWrapper';
 
@@ -7,7 +9,10 @@ function NewMuteTimingPage() {
   return (
     <AlertmanagerPageWrapper
       navId="am-routes"
-      pageNav={{ id: 'alert-policy-new', text: 'Add mute timing' }}
+      pageNav={{
+        id: 'alert-policy-new',
+        text: t('alerting.new-mute-timing-page.text.add-mute-timing', 'Add mute timing'),
+      }}
       accessType="notification"
     >
       <MuteTimingForm />

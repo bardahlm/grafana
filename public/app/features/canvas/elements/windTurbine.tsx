@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 import { GrafanaTheme2, LinkModel } from '@grafana/data';
 import { ScalarDimensionConfig } from '@grafana/schema';
 import { useStyles2 } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 import { DimensionContext } from 'app/features/dimensions';
 import { ScalarDimensionEditor } from 'app/features/dimensions/editors';
 
@@ -110,7 +111,7 @@ export const windTurbineItem: CanvasElementItem = {
       category,
       id: 'rpm',
       path: 'config.rpm',
-      name: 'RPM',
+      name: t('canvas.wind-turbine-item.name.rpm', 'RPM'),
       editor: ScalarDimensionEditor,
     });
   },

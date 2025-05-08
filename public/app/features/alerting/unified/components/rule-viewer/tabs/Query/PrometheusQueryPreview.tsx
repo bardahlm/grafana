@@ -1,5 +1,6 @@
 import { RawQuery } from '@grafana/plugin-ui';
 import { promqlGrammar } from '@grafana/prometheus';
+import { t } from 'app/core/internationalization';
 
 interface Props {
   query: string;
@@ -8,7 +9,10 @@ interface Props {
 const PrometheusQueryPreview = ({ query }: Props) => {
   return (
     <pre>
-      <RawQuery query={query} language={{ grammar: promqlGrammar, name: 'promql' }} />
+      <RawQuery
+        query={query}
+        language={{ grammar: promqlGrammar, name: t('alerting.prometheus-query-preview.name.promql', 'promql') }}
+      />
     </pre>
   );
 };

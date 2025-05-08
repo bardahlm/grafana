@@ -19,7 +19,7 @@ export class ConditionalRenderingVariable extends ConditionalRenderingBase<Condi
 
   public static serializer: ConditionalRenderingSerializerRegistryItem = {
     id: 'ConditionalRenderingVariable',
-    name: 'Variable',
+    name: t('dashboard-scene.conditional-rendering-variable.name.variable', 'Variable'),
     deserialize: this.deserialize,
   };
 

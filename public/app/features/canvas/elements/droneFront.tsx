@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 import { ScalarDimensionConfig } from '@grafana/schema';
 import { useStyles2 } from '@grafana/ui';
+import { t } from 'app/core/internationalization';
 import { DimensionContext } from 'app/features/dimensions';
 import { ScalarDimensionEditor } from 'app/features/dimensions/editors';
 
@@ -114,7 +115,7 @@ export const droneFrontItem: CanvasElementItem = {
       category,
       id: 'rollAngle',
       path: 'config.rollAngle',
-      name: 'Roll Angle',
+      name: t('canvas.drone-front-item.name.roll-angle', 'Roll Angle'),
       editor: ScalarDimensionEditor,
     });
   },

@@ -124,7 +124,7 @@ export const GrafanaReceiverForm = ({ contactPoint, readOnly = false, editMode }
         alertManagerSourceName: GRAFANA_RULES_SOURCE_NAME,
         receivers: [
           {
-            name: 'test',
+            name: t('alerting.grafana-receiver-form.test-notification.payload.name.test', 'test'),
             grafana_managed_receiver_configs: [chan],
           },
         ],

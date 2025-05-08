@@ -12,6 +12,7 @@ import {
   getDisplayProcessor,
 } from '@grafana/data';
 import { fieldIndexComparer } from '@grafana/data/internal';
+import { t } from 'app/core/internationalization';
 import { mapStateWithReasonToBaseState } from 'app/types/unified-alerting-dto';
 
 import { labelsMatchMatchers } from '../../../utils/alertmanager';
@@ -125,7 +126,7 @@ export function groupDataFramesByTimeAndFilterByLabels(dataFrames: DataFrame[], 
 
   // Create new time field with grouped time values
   const newTimeField: Field = {
-    name: 'time',
+    name: t('alerting.group-data-frames-by-time-and-filter-by-labels.new-time-field.name.time', 'time'),
     type: FieldType.time,
     values: Object.keys(groupedTimeFields).map(Number),
     config: { displayName: 'Time', custom: { fillOpacity: 100 } },
@@ -133,7 +134,7 @@ export function groupDataFramesByTimeAndFilterByLabels(dataFrames: DataFrame[], 
 
   // Create count field with count of records in each group
   const countField: Field = {
-    name: 'value',
+    name: t('alerting.group-data-frames-by-time-and-filter-by-labels.count-field.name.value', 'value'),
     type: FieldType.number,
     values: Object.values(groupedTimeFields).map((group) => group.length),
     config: {},
@@ -156,7 +157,7 @@ export function groupDataFramesByTimeAndFilterByLabels(dataFrames: DataFrame[], 
  * */
 function logRecordsToDataFrame(instanceLabels: string, records: LogRecord[]): DataFrame {
   const timeField: DataFrameField = {
-    name: 'time',
+    name: t('alerting.log-records-to-data-frame.time-field.name.time', 'time'),
     type: FieldType.time,
     values: [...records.map((record) => record.timestamp)],
     config: { displayName: 'Time', custom: { fillOpacity: 100 } },
@@ -198,7 +199,7 @@ function logRecordsToDataFrame(instanceLabels: string, records: LogRecord[]): Da
  * */
 export function logRecordsToDataFrameForState(records: LogRecord[], theme: GrafanaTheme2): DataFrame {
   const timeField: DataFrameField = {
-    name: 'time',
+    name: t('alerting.log-records-to-data-frame-for-state.time-field.name.time', 'time'),
     type: FieldType.time,
     values: [...records.map((record) => record.timestamp), Date.now()],
     config: { displayName: 'Time', custom: { fillOpacity: 100 } },
@@ -218,7 +219,7 @@ export function logRecordsToDataFrameForState(records: LogRecord[], theme: Grafa
         values: timeField.values.map((_, i) => timeField.values[timeIndex[i]]),
       },
       {
-        name: 'State',
+        name: t('alerting.log-records-to-data-frame-for-state.frame.name.state', 'State'),
         type: FieldType.string,
         values: stateValues.map((_, i) => stateValues[timeIndex[i]]),
         config: {

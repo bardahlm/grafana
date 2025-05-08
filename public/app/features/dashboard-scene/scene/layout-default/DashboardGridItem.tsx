@@ -17,6 +17,7 @@ import {
   VariableValueSingle,
 } from '@grafana/scenes';
 import { GRID_COLUMN_COUNT } from 'app/core/constants';
+import { t } from 'app/core/internationalization';
 import { OptionsPaneCategoryDescriptor } from 'app/features/dashboard/components/PanelEditor/OptionsPaneCategoryDescriptor';
 
 import { getCloneKey } from '../../utils/clone';
@@ -123,7 +124,10 @@ export class DashboardGridItem
     const variable =
       sceneGraph.lookupVariable(this.state.variableName, this) ??
       new CustomVariable({
-        name: '_____default_sys_repeat_var_____',
+        name: t(
+          'dashboard-scene.dashboard-grid-item.variable.name.defaultsysrepeatvar',
+          '_____default_sys_repeat_var_____'
+        ),
         options: [],
         value: '',
         text: '',

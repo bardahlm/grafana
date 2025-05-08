@@ -1,6 +1,7 @@
 import { asyncScheduler, Observable, of, scheduled } from 'rxjs';
 
 import { AnnotationEvent, getDefaultTimeRange, PanelModel } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 
 import { DashboardQueryRunnerOptions } from './types';
 
@@ -25,7 +26,7 @@ function getAnnotation({
     id: useSnapshotData ? 'Snapshotted' : undefined,
     enable,
     hide: false,
-    name: 'Test',
+    name: t('query.get-annotation.annotation.name.test', 'Test'),
     iconColor: 'pink',
     datasource,
   };

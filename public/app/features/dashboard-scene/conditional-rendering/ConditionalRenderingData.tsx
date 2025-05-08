@@ -18,7 +18,7 @@ export class ConditionalRenderingData extends ConditionalRenderingBase<Condition
 
   public static serializer: ConditionalRenderingSerializerRegistryItem = {
     id: 'ConditionalRenderingData',
-    name: 'Data',
+    name: t('dashboard-scene.conditional-rendering-data.name.data', 'Data'),
     deserialize: this.deserialize,
   };
 

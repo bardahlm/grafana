@@ -22,6 +22,7 @@ import { RefreshEvent, TimeRangeUpdatedEvent, config } from '@grafana/runtime';
 import { Dashboard, DashboardLink, VariableModel } from '@grafana/schema';
 import { DEFAULT_ANNOTATION_COLOR } from '@grafana/ui';
 import { GRID_CELL_HEIGHT, GRID_CELL_VMARGIN, GRID_COLUMN_COUNT, REPEAT_DIR_VERTICAL } from 'app/core/constants';
+import { t } from 'app/core/internationalization';
 import { contextSrv } from 'app/core/services/context_srv';
 import { sortedDeepCloneWithoutNulls } from 'app/core/utils/object';
 import { variableAdapters } from 'app/features/variables/adapters';
@@ -196,7 +197,7 @@ export class DashboardModel implements TimeModel {
 
     this.annotations.list.unshift({
       datasource: { uid: '-- Grafana --', type: 'grafana' },
-      name: 'Annotations & Alerts',
+      name: t('dashboard.dashboard-model.name.annotations-alerts', 'Annotations & Alerts'),
       type: 'dashboard',
       iconColor: DEFAULT_ANNOTATION_COLOR,
       enable: true,

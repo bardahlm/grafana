@@ -1,6 +1,7 @@
 import { map } from 'rxjs/operators';
 
 import { DataFrame, DataTransformerID, Field, FieldType, SynchronousDataTransformerInfo } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 
 import { getDistinctLabels } from '../utils';
 
@@ -136,7 +137,14 @@ function getErrorFrame(text: string): DataFrame {
     meta: {
       notices: [{ severity: 'error', text }],
     },
-    fields: [{ name: 'Error', type: FieldType.string, config: {}, values: [text] }],
+    fields: [
+      {
+        name: t('transformers.get-error-frame.name.error', 'Error'),
+        type: FieldType.string,
+        config: {},
+        values: [text],
+      },
+    ],
     length: 0,
   };
 }

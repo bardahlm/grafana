@@ -8,6 +8,7 @@ import {
   VariableHide,
 } from '@grafana/data';
 import { VariableRefresh } from '@grafana/schema';
+import { t } from 'app/core/internationalization';
 import { dashboardReducer } from 'app/features/dashboard/state/reducers';
 
 import { DashboardState, StoreState } from '../../../types';
@@ -32,14 +33,14 @@ export const getVariableState = (
     const dashboardModel: DashboardVariableModel = {
       ...initialVariableModelState,
       id: '__dashboard',
-      name: '__dashboard',
+      name: t('variables.get-variable-state.dashboard-model.name.dashboard', '__dashboard'),
       type: 'system',
       index: -3,
       skipUrlSync: true,
       hide: VariableHide.hideVariable,
       current: {
         value: {
-          name: 'A dashboard title',
+          name: t('variables.get-variable-state.dashboard-model.name.a-dashboard-title', 'A dashboard title'),
           uid: 'An dashboard UID',
           toString: () => 'A dashboard title',
         },
@@ -49,14 +50,14 @@ export const getVariableState = (
     const orgModel: OrgVariableModel = {
       ...initialVariableModelState,
       id: '__org',
-      name: '__org',
+      name: t('variables.get-variable-state.org-model.name.org', '__org'),
       type: 'system',
       index: -2,
       skipUrlSync: true,
       hide: VariableHide.hideVariable,
       current: {
         value: {
-          name: 'An org name',
+          name: t('variables.get-variable-state.org-model.name.an-org-name', 'An org name'),
           id: 1,
           toString: () => '1',
         },
@@ -66,7 +67,7 @@ export const getVariableState = (
     const userModel: UserVariableModel = {
       ...initialVariableModelState,
       id: '__user',
-      name: '__user',
+      name: t('variables.get-variable-state.user-model.name.user', '__user'),
       type: 'system',
       index: -1,
       skipUrlSync: true,

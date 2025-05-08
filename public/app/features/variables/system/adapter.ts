@@ -1,6 +1,7 @@
 import { ComponentType } from 'react';
 
 import { LoadingState, SystemVariable, VariableHide } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 
 import { VariableAdapter } from '../adapters';
 import { VariableEditorProps } from '../editor/types';
@@ -11,7 +12,7 @@ export const createSystemVariableAdapter = (): VariableAdapter<SystemVariable<an
   return {
     id: 'system',
     description: '',
-    name: 'system',
+    name: t('variables.create-system-variable-adapter.name.system', 'system'),
     initialState: {
       ...initialVariableModelState,
       type: 'system',

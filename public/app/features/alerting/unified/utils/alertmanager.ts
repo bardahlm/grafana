@@ -1,6 +1,7 @@
 import { isEqual, uniqWith } from 'lodash';
 
 import { SelectableValue } from '@grafana/data';
+import { t } from 'app/core/internationalization';
 import {
   AlertManagerCortexConfig,
   Matcher,
@@ -22,7 +23,9 @@ import { MatcherFormatter, matchLabelsSet, parsePromQLStyleMatcherLooseSafe, unq
 export function addDefaultsToAlertmanagerConfig(config: AlertManagerCortexConfig): AlertManagerCortexConfig {
   // add default receiver if it does not exist
   if (!config.alertmanager_config.receivers) {
-    config.alertmanager_config.receivers = [{ name: 'default ' }];
+    config.alertmanager_config.receivers = [
+      { name: t('alerting.add-defaults-to-alertmanager-config.name.default', 'default ') },
+    ];
   }
   // add default route if it does not exists
   if (!config.alertmanager_config.route) {
